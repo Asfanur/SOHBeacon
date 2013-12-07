@@ -20,6 +20,8 @@
 @property (nonatomic, strong)NSString * userLocation;
 @property (nonatomic, strong)NSString * userEmail;
 
++ (id)sharedInstance;
+
 - (void)postDataToSpreadsheet:(CLBeacon *)closesBeacon withUserInfo:(SOHUser *)user;
 
 @end

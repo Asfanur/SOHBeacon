@@ -14,6 +14,26 @@ static NSString * const kSpreadsheetURL = @"https://docs.google.com/forms/d/1H-_
 
 @implementation SOHUser
 
++ (id)sharedInstance {
+    static SOHUser *userInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        userInstance = [[self alloc] init];
+    });
+    return userInstance;
+}
+
+
+- (SOHUser *)init
+{
+    self = [super init];
+    if (self) {
+        //Custom initializations
+    }
+    
+    return self;
+}
+
 #pragma mark - GDataAPI
 
 // spreadsheet cells
@@ -36,8 +56,8 @@ static NSString * const kSpreadsheetURL = @"https://docs.google.com/forms/d/1H-_
     [request setHTTPMethod:@"POST"];
     
     NSLog(@"%@ User Data", user);
-//    NSString *relativeDistance = [self proxmityString:closestBeacon.proximity];
-    NSString *relativeDistance = proxmityString(closestBeacon.proximity);
+    NSString *relativeDistance = [self proxmityString:closestBeacon.proximity];
+//    NSString *relativeDistance = proxmityString(closestBeacon.proximity);
     
     //&draftResponse=[]&pageHistory=0&fbzx=4798022380500650763
     NSString *params = [NSString stringWithFormat:@"%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@&%@=%@",
@@ -81,28 +101,28 @@ static NSString * const kSpreadsheetURL = @"https://docs.google.com/forms/d/1H-_
 
 
 //// relative distance string value to beacon
-//- (NSString *)proxmityString:(CLProximity)proximity
-//{
-//    NSString *proximityString;
-//    
-//    switch (proximity) {
-//        case CLProximityNear:
-//            proximityString = @"Near";
-//            break;
-//        case CLProximityImmediate:
-//            proximityString = @"Immediate";
-//            break;
-//        case CLProximityFar:
-//            proximityString = @"Far";
-//            break;
-//        case CLProximityUnknown:
-//        default:
-//            proximityString = @"Unknown";
-//            break;
-//    }
-//    
-//    return proximityString;
-//}
+- (NSString *)proxmityString:(CLProximity)proximity
+{
+    NSString *proximityString;
+    
+    switch (proximity) {
+        case CLProximityNear:
+            proximityString = @"Near";
+            break;
+        case CLProximityImmediate:
+            proximityString = @"Immediate";
+            break;
+        case CLProximityFar:
+            proximityString = @"Far";
+            break;
+        case CLProximityUnknown:
+        default:
+            proximityString = @"Unknown";
+            break;
+    }
+    
+    return proximityString;
+}
 
 
 @end

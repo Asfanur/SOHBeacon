@@ -10,4 +10,8 @@
 
 @interface SOHDetailViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIImageView *offerImage;
+
+- (void)setProductOffer:(NSNumber *)minor;
+
 @end

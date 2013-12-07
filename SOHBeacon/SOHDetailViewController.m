@@ -27,6 +27,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.offerImage.image = [UIImage imageNamed:@"Asian tours-1360"];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -41,6 +43,23 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setProductOffer:(NSNumber *)minor
+{
+    if ([minor isEqualToNumber:@58605]) {
+        self.offerImage.image = [UIImage imageNamed:@"Kenji Bento Box Opera_27.5.13 16327_edit"];
+        
+    } else if ([minor isEqualToNumber:@18108]) {
+        self.offerImage.image = [UIImage imageNamed:@"Asian tours-1360"];
+        
+    } else if ([minor isEqualToNumber:@57466]) {
+        self.offerImage.image = [NSURL URLWithString:@"SOH_TOURS_MANDARIN_v2"];
+        
+    } else {
+        self.offerImage.image = [UIImage imageNamed:@"purpleNotificationBig"];
+    }
+    
 }
 
 @end

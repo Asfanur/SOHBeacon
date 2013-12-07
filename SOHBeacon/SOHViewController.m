@@ -7,6 +7,7 @@
 //
 
 #import "SOHViewController.h"
+#import "SOHUser.h"
 
 @interface SOHViewController ()
 
@@ -68,7 +69,19 @@
                  
                  dispatch_async(dispatch_get_main_queue(), ^{
                      NSLog(@"%@",[[[self.facebookAccount dictionaryWithValuesForKeys:c] objectForKey:@"properties"] objectForKey:@"fullname"]);
-                     NSLog(@"emal %@",self.facebookAccount.username);
+                     NSLog(@"%@",[[self.facebookAccount dictionaryWithValuesForKeys:c] objectForKey:@"properties"]);
+                     
+                     NSLog(@"email %@",self.facebookAccount.username);
+                     
+                     SOHUser *user = [SOHUser sharedInstance];
+                     
+                     user.userId = [[[self.facebookAccount dictionaryWithValuesForKeys:c] objectForKey:@"properties"] objectForKey:@"fb_id"];
+                     user.firstName = [[[self.facebookAccount dictionaryWithValuesForKeys:c] objectForKey:@"properties"] objectForKey:@"firstname"];
+                     user.lastName = [[[self.facebookAccount dictionaryWithValuesForKeys:c] objectForKey:@"properties"] objectForKey:@"lastname"];
+                     user.firstName = [[[self.facebookAccount dictionaryWithValuesForKeys:c] objectForKey:@"properties"] objectForKey:@"gender"];
+                     user.userEmail = [[[self.facebookAccount dictionaryWithValuesForKeys:c] objectForKey:@"properties"] objectForKey:@"email"];
+                     
+                     
                      [self performSegueWithIdentifier:@"detailView" sender:self];
                      
                      

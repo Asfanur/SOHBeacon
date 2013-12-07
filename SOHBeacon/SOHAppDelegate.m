@@ -8,6 +8,8 @@
 
 #import "SOHAppDelegate.h"
 #import "SOHBeaconHelper.h"
+#import "SOHDetailViewController.h"
+#import "SOHUser.h"
 
 
 static NSString * const kUUID = @"B9407F30-F5F8-466E-AFF9-25556B57FE6D";
@@ -92,6 +94,9 @@ static NSString * const kRegionIdentifier = @"com.sydneyoperahouse";
                inRegion:(CLBeaconRegion *)region {
     
     NSString * relativeDistance;
+    SOHUser *user = [SOHUser sharedInstance];
+    
+    SOHDetailViewController *SOHdvc = [[SOHDetailViewController alloc] init];
     
     if (beacons.count > 0) {
         NSLog(@"Found beacons! %@", beacons);
@@ -99,8 +104,8 @@ static NSString * const kRegionIdentifier = @"com.sydneyoperahouse";
         // TODO: Sort beacons by by distance
         _closestBeacon = [beacons objectAtIndex:0];
         
-//        relativeDistance = [self proxmityString:_closestBeacon.proximity];
-        relativeDistance = proxmityString(_closestBeacon.proximity);
+        relativeDistance = [self proxmityString:_closestBeacon.proximity];
+//        relativeDistance = proxmityString(_closestBeacon.proximity);
         
         NSLog(@"%@, %@ • %@ • %.2fm • %li",
               _closestBeacon.major.stringValue,
@@ -110,6 +115,7 @@ static NSString * const kRegionIdentifier = @"com.sydneyoperahouse";
         
         
 //        [self setProductOffer:_closestBeacon.minor];
+        [SOHdvc setProductOffer:_closestBeacon.minor];
         
         if ([_currentBeacon.minor isEqualToNumber:_closestBeacon.minor]) {
             NSLog(@"Current Beacon %@", _currentBeacon);
@@ -126,6 +132,7 @@ static NSString * const kRegionIdentifier = @"com.sydneyoperahouse";
 //            if (_isFBdataFetched) {
 //                [self postDataToSpreadsheetViaForm];
 //            }
+            [[SOHUser sharedInstance] postDataToSpreadsheet:_currentBeacon withUserInfo:user];
             
             _currentBeacon = _closestBeacon;
         }
@@ -176,6 +183,30 @@ static NSString * const kRegionIdentifier = @"com.sydneyoperahouse";
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
     
     
+}
+
+//// relative distance string value to beacon
+- (NSString *)proxmityString:(CLProximity)proximity
+{
+    NSString *proximityString;
+
+    switch (proximity) {
+        case CLProximityNear:
+            proximityString = @"Near";
+            break;
+        case CLProximityImmediate:
+            proximityString = @"Immediate";
+            break;
+        case CLProximityFar:
+            proximityString = @"Far";
+            break;
+        case CLProximityUnknown:
+        default:
+            proximityString = @"Unknown";
+            break;
+    }
+
+    return proximityString;
 }
 
 
