@@ -11,6 +11,7 @@
 		3A4F14C118532162009BDE2B /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4F14C018532162009BDE2B /* Accounts.framework */; };
 		3A4F14C3185322CA009BDE2B /* images-2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 3A4F14C2185322CA009BDE2B /* images-2.jpeg */; };
 		3A4F14C518532300009BDE2B /* SOHext 11 LOW RES.jpg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A4F14C418532300009BDE2B /* SOHext 11 LOW RES.jpg.jpg */; };
+		3A4F14CC1853269C009BDE2B /* Evening.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A4F14CB1853269C009BDE2B /* Evening.jpg */; };
 		41A06E7F1852DC1800D56342 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A06E7E1852DC1800D56342 /* Foundation.framework */; };
 		41A06E811852DC1800D56342 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A06E801852DC1800D56342 /* CoreGraphics.framework */; };
 		41A06E831852DC1800D56342 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A06E821852DC1800D56342 /* UIKit.framework */; };
@@ -42,6 +43,7 @@
 		3A4F14C018532162009BDE2B /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		3A4F14C2185322CA009BDE2B /* images-2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "images-2.jpeg"; sourceTree = "<group>"; };
 		3A4F14C418532300009BDE2B /* SOHext 11 LOW RES.jpg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "SOHext 11 LOW RES.jpg.jpg"; sourceTree = "<group>"; };
+		3A4F14CB1853269C009BDE2B /* Evening.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Evening.jpg; sourceTree = "<group>"; };
 		41A06E7B1852DC1800D56342 /* SOHBeacon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SOHBeacon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41A06E7E1852DC1800D56342 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		41A06E801852DC1800D56342 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -138,6 +140,7 @@
 		41A06E851852DC1800D56342 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3A4F14CB1853269C009BDE2B /* Evening.jpg */,
 				3A4F14C2185322CA009BDE2B /* images-2.jpeg */,
 				41A06E861852DC1800D56342 /* SOHBeacon-Info.plist */,
 				41A06E871852DC1800D56342 /* InfoPlist.strings */,
@@ -244,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41A06E971852DC1800D56342 /* Images.xcassets in Resources */,
+				3A4F14CC1853269C009BDE2B /* Evening.jpg in Resources */,
 				41A06E891852DC1800D56342 /* InfoPlist.strings in Resources */,
 				3A4F14C3185322CA009BDE2B /* images-2.jpeg in Resources */,
 				41A06E921852DC1800D56342 /* Main.storyboard in Resources */,
