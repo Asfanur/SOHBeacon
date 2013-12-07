@@ -21,6 +21,10 @@
 		41A06EA01852DC1800D56342 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A06E821852DC1800D56342 /* UIKit.framework */; };
 		41A06EA81852DC1800D56342 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 41A06EA61852DC1800D56342 /* InfoPlist.strings */; };
 		41A06EAA1852DC1800D56342 /* SOHBeaconTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A06EA91852DC1800D56342 /* SOHBeaconTests.m */; };
+		41A06EB41852F12B00D56342 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A06EB31852F12B00D56342 /* CoreLocation.framework */; };
+		41A06EB61852F13400D56342 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A06EB51852F13400D56342 /* CoreBluetooth.framework */; };
+		41A06EBA1852F1BE00D56342 /* SOHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A06EB91852F1BE00D56342 /* SOHUser.m */; };
+		41A06EBE1852FFCA00D56342 /* SOHBeaconHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A06EBD1852FFCA00D56342 /* SOHBeaconHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +57,12 @@
 		41A06EA51852DC1800D56342 /* SOHBeaconTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SOHBeaconTests-Info.plist"; sourceTree = "<group>"; };
 		41A06EA71852DC1800D56342 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		41A06EA91852DC1800D56342 /* SOHBeaconTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SOHBeaconTests.m; sourceTree = "<group>"; };
+		41A06EB31852F12B00D56342 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		41A06EB51852F13400D56342 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		41A06EB81852F1BE00D56342 /* SOHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOHUser.h; sourceTree = "<group>"; };
+		41A06EB91852F1BE00D56342 /* SOHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOHUser.m; sourceTree = "<group>"; };
+		41A06EBC1852FFCA00D56342 /* SOHBeaconHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOHBeaconHelper.h; sourceTree = "<group>"; };
+		41A06EBD1852FFCA00D56342 /* SOHBeaconHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOHBeaconHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +70,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41A06EB61852F13400D56342 /* CoreBluetooth.framework in Frameworks */,
+				41A06EB41852F12B00D56342 /* CoreLocation.framework in Frameworks */,
 				41A06E811852DC1800D56342 /* CoreGraphics.framework in Frameworks */,
 				41A06E831852DC1800D56342 /* UIKit.framework in Frameworks */,
 				41A06E7F1852DC1800D56342 /* Foundation.framework in Frameworks */,
@@ -101,6 +113,8 @@
 		41A06E7D1852DC1800D56342 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				41A06EB51852F13400D56342 /* CoreBluetooth.framework */,
+				41A06EB31852F12B00D56342 /* CoreLocation.framework */,
 				41A06E7E1852DC1800D56342 /* Foundation.framework */,
 				41A06E801852DC1800D56342 /* CoreGraphics.framework */,
 				41A06E821852DC1800D56342 /* UIKit.framework */,
@@ -112,6 +126,8 @@
 		41A06E841852DC1800D56342 /* SOHBeacon */ = {
 			isa = PBXGroup;
 			children = (
+				41A06EBB1852FF5C00D56342 /* Helpers */,
+				41A06EB71852F18800D56342 /* Models */,
 				41A06E8D1852DC1800D56342 /* SOHAppDelegate.h */,
 				41A06E8E1852DC1800D56342 /* SOHAppDelegate.m */,
 				41A06E901852DC1800D56342 /* Main.storyboard */,
@@ -150,6 +166,24 @@
 				41A06EA61852DC1800D56342 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		41A06EB71852F18800D56342 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				41A06EB81852F1BE00D56342 /* SOHUser.h */,
+				41A06EB91852F1BE00D56342 /* SOHUser.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		41A06EBB1852FF5C00D56342 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				41A06EBC1852FFCA00D56342 /* SOHBeaconHelper.h */,
+				41A06EBD1852FFCA00D56342 /* SOHBeaconHelper.m */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,6 +285,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				41A06E8B1852DC1800D56342 /* main.m in Sources */,
+				41A06EBE1852FFCA00D56342 /* SOHBeaconHelper.m in Sources */,
+				41A06EBA1852F1BE00D56342 /* SOHUser.m in Sources */,
 				41A06E8F1852DC1800D56342 /* SOHAppDelegate.m in Sources */,
 				41A06E951852DC1800D56342 /* SOHViewController.m in Sources */,
 			);
@@ -461,6 +497,7 @@
 				41A06EAF1852DC1800D56342 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		41A06EB01852DC1800D56342 /* Build configuration list for PBXNativeTarget "SOHBeaconTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +506,7 @@
 				41A06EB21852DC1800D56342 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

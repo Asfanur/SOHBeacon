@@ -7,12 +7,54 @@
 //
 
 #import "SOHAppDelegate.h"
+#import "SOHBeaconHelper.h"
+
+
+static NSString * const kUUID = @"B9407F30-F5F8-466E-AFF9-25556B57FE6D";
+static NSString * const kRegionIdentifier = @"com.sydneyoperahouse";
+
+//Green beacon  Major:40836 Minor:18108
+//Purple beacon Major:29836 Minor:57466
+//Blue beacon Major:394 Minor:58605
+
+@interface SOHAppDelegate ()
+
+@property (nonatomic, strong) CLLocationManager * locationManager;
+@property (nonatomic, strong) CLBeaconRegion *region;
+@property (nonatomic, strong) CLBeacon *closestBeacon;
+@property (nonatomic, strong) CLBeacon *currentBeacon;
+
+@end
 
 @implementation SOHAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    
+    NSUUID *estimoteUUID = [[NSUUID alloc] initWithUUIDString:kUUID];
+    self.region = [[CLBeaconRegion alloc] initWithProximityUUID:estimoteUUID
+                                                     identifier:kRegionIdentifier];
+    
+    // launch app when display is turned on and inside region
+    self.region.notifyEntryStateOnDisplay = YES;
+    
+    if ([CLLocationManager isMonitoringAvailableForClass:[CLBeaconRegion class]]) {
+        [_locationManager startMonitoringForRegion:self.region];
+        
+        // get status update right away for UI
+        [_locationManager requestStateForRegion:self.region];
+        
+        // Start ranging for beacons
+        [_locationManager startRangingBeaconsInRegion:self.region];
+        
+    } else {
+        NSLog(@"This device does not support monitoring beacon regions");
+    }
+    
+    
     return YES;
 }
 							
@@ -42,5 +84,99 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+#pragma mark - CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager
+        didRangeBeacons:(NSArray *)beacons
+               inRegion:(CLBeaconRegion *)region {
+    
+    NSString * relativeDistance;
+    
+    if (beacons.count > 0) {
+        NSLog(@"Found beacons! %@", beacons);
+        
+        // TODO: Sort beacons by by distance
+        _closestBeacon = [beacons objectAtIndex:0];
+        
+//        relativeDistance = [self proxmityString:_closestBeacon.proximity];
+        relativeDistance = proxmityString(_closestBeacon.proximity);
+        
+        NSLog(@"%@, %@ • %@ • %.2fm • %li",
+              _closestBeacon.major.stringValue,
+              _closestBeacon.minor.stringValue, relativeDistance,
+              _closestBeacon.accuracy,
+              (long)_closestBeacon.rssi);
+        
+        
+//        [self setProductOffer:_closestBeacon.minor];
+        
+        if ([_currentBeacon.minor isEqualToNumber:_closestBeacon.minor]) {
+            NSLog(@"Current Beacon %@", _currentBeacon);
+            //            if (_currentBeacon.proximity == CLProximityImmediate || _currentBeacon.proximity == CLProximityNear) {
+            //                [self setProductOffer:_currentBeacon.minor];
+            //
+            //            }
+            
+            
+        } else {
+            // Moving to another beacon within the region
+            NSLog(@"Current Beacon %@", _currentBeacon);
+            
+//            if (_isFBdataFetched) {
+//                [self postDataToSpreadsheetViaForm];
+//            }
+            
+            _currentBeacon = _closestBeacon;
+        }
+        
+    } else {
+        NSLog(@"No beacons found!");
+        
+    }
+    
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+	  didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region
+{
+    
+    NSLog(@"Beacon %@ UUID %@ major %@minor %@ identifier", self.region.proximityUUID, self.region.major, self.region.minor, self.region.identifier );
+    
+    if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
+        
+        // don't send any notifications if app is open
+        return;
+    }
+    
+    // A user can transition in or out of a region while the application is not running.
+    // When this happens CoreLocation will launch the application momentarily, call this delegate method
+    // and we will let the user know via a local notification.
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    
+    if(state == CLRegionStateInside) {
+        NSLog(@"Inside Region %@", self.region.identifier);
+        
+        notification.alertBody = [NSString stringWithFormat:@"You're inside %@", self.region.identifier];
+        //        notification.userInfo = @{@"beacon_minor": _closestBeacon.minor};
+        
+        
+    } else if(state == CLRegionStateOutside) {
+        NSLog(@"Outside Region %@", self.region.identifier);
+        
+        notification.alertBody = [NSString stringWithFormat:@"You're outside %@", self.region.identifier];
+        
+    } else {
+        return;
+    }
+    
+    // If the application is in the foreground, it will get a callback to application:didReceiveLocalNotification:.
+    // If its not, iOS will display the notification to the user.
+    //    [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+    
+    
+}
+
 
 @end
