@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A3E4A7418532E41001710A5 /* SOHDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E4A7318532E41001710A5 /* SOHDetailViewController.m */; };
 		3A4F14BF1853215A009BDE2B /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4F14BE1853215A009BDE2B /* Social.framework */; };
 		3A4F14C118532162009BDE2B /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4F14C018532162009BDE2B /* Accounts.framework */; };
 		3A4F14C3185322CA009BDE2B /* images-2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 3A4F14C2185322CA009BDE2B /* images-2.jpeg */; };
@@ -39,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A3E4A7218532E41001710A5 /* SOHDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOHDetailViewController.h; sourceTree = "<group>"; };
+		3A3E4A7318532E41001710A5 /* SOHDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOHDetailViewController.m; sourceTree = "<group>"; };
 		3A4F14BE1853215A009BDE2B /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		3A4F14C018532162009BDE2B /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		3A4F14C2185322CA009BDE2B /* images-2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "images-2.jpeg"; sourceTree = "<group>"; };
@@ -129,6 +132,8 @@
 				41A06E8D1852DC1800D56342 /* SOHAppDelegate.h */,
 				41A06E8E1852DC1800D56342 /* SOHAppDelegate.m */,
 				41A06E901852DC1800D56342 /* Main.storyboard */,
+				3A3E4A7218532E41001710A5 /* SOHDetailViewController.h */,
+				3A3E4A7318532E41001710A5 /* SOHDetailViewController.m */,
 				41A06E931852DC1800D56342 /* SOHViewController.h */,
 				41A06E941852DC1800D56342 /* SOHViewController.m */,
 				41A06E961852DC1800D56342 /* Images.xcassets */,
@@ -270,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A3E4A7418532E41001710A5 /* SOHDetailViewController.m in Sources */,
 				41A06E8B1852DC1800D56342 /* main.m in Sources */,
 				41A06E8F1852DC1800D56342 /* SOHAppDelegate.m in Sources */,
 				41A06E951852DC1800D56342 /* SOHViewController.m in Sources */,

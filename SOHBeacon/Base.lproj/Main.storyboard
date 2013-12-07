@@ -42,10 +42,10 @@
             </objects>
             <point key="canvasLocation" x="-34" y="-122"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="kNV-nk-gKt">
             <objects>
-                <viewController id="4RE-Gb-YXv" sceneMemberID="viewController">
+                <viewController id="4RE-Gb-YXv" customClass="SOHDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="r9Z-1X-1KN"/>
                         <viewControllerLayoutGuide type="bottom" id="En4-8C-wU5"/>
