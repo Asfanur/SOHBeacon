@@ -1,0 +1,4 @@
+SOHBeacon
+=========
+
+Sydney Opera Hackathon
