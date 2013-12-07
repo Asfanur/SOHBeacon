@@ -20,14 +20,46 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BAd-uE-vqK">
+                                <rect key="frame" x="6" y="465" width="309" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="images-2.jpeg">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="facebook:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="L0D-XF-LIH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="NDA-4s-bZg"/>
+                    <connections>
+                        <segue destination="4RE-Gb-YXv" kind="push" identifier="detailView" id="h3i-ms-4et"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="472" y="54"/>
+            <point key="canvasLocation" x="-34" y="-122"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="kNV-nk-gKt">
+            <objects>
+                <viewController id="4RE-Gb-YXv" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="r9Z-1X-1KN"/>
+                        <viewControllerLayoutGuide type="bottom" id="En4-8C-wU5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Tv1-EH-9jT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ns1-AX-t9e"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="caG-3S-jc2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="337" y="29"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ec5-KG-U7I">
@@ -45,11 +77,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="izU-5E-7ZV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="91" y="54"/>
+            <point key="canvasLocation" x="-561" y="-178"/>
         </scene>
     </scenes>
     <resources>
         <image name="Evening.jpg" width="3714" height="2748"/>
+        <image name="images-2.jpeg" width="254" height="46"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
