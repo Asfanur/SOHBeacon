@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A4F14BF1853215A009BDE2B /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4F14BE1853215A009BDE2B /* Social.framework */; };
+		3A4F14C118532162009BDE2B /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4F14C018532162009BDE2B /* Accounts.framework */; };
 		41A06E7F1852DC1800D56342 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A06E7E1852DC1800D56342 /* Foundation.framework */; };
 		41A06E811852DC1800D56342 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A06E801852DC1800D56342 /* CoreGraphics.framework */; };
 		41A06E831852DC1800D56342 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A06E821852DC1800D56342 /* UIKit.framework */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A4F14BE1853215A009BDE2B /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		3A4F14C018532162009BDE2B /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		41A06E7B1852DC1800D56342 /* SOHBeacon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SOHBeacon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41A06E7E1852DC1800D56342 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		41A06E801852DC1800D56342 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -60,6 +64,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A4F14C118532162009BDE2B /* Accounts.framework in Frameworks */,
+				3A4F14BF1853215A009BDE2B /* Social.framework in Frameworks */,
 				41A06E811852DC1800D56342 /* CoreGraphics.framework in Frameworks */,
 				41A06E831852DC1800D56342 /* UIKit.framework in Frameworks */,
 				41A06E7F1852DC1800D56342 /* Foundation.framework in Frameworks */,
@@ -101,6 +107,8 @@
 		41A06E7D1852DC1800D56342 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3A4F14C018532162009BDE2B /* Accounts.framework */,
+				3A4F14BE1853215A009BDE2B /* Social.framework */,
 				41A06E7E1852DC1800D56342 /* Foundation.framework */,
 				41A06E801852DC1800D56342 /* CoreGraphics.framework */,
 				41A06E821852DC1800D56342 /* UIKit.framework */,
@@ -461,6 +469,7 @@
 				41A06EAF1852DC1800D56342 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		41A06EB01852DC1800D56342 /* Build configuration list for PBXNativeTarget "SOHBeaconTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +478,7 @@
 				41A06EB21852DC1800D56342 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
