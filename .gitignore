@@ -16,6 +16,6 @@ DerivedData
 .idea/
 *.hmap
 *.xccheckout
-
+*/SampleDocs/*.mp4
 #CocoaPods
 Pods
