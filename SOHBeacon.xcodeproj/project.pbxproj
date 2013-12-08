@@ -12,7 +12,13 @@
 		3A4F14C118532162009BDE2B /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4F14C018532162009BDE2B /* Accounts.framework */; };
 		3A4F14C3185322CA009BDE2B /* images-2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 3A4F14C2185322CA009BDE2B /* images-2.jpeg */; };
 		3A4F14C518532300009BDE2B /* SOHext 11 LOW RES.jpg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A4F14C418532300009BDE2B /* SOHext 11 LOW RES.jpg.jpg */; };
-		3A4F14CC1853269C009BDE2B /* Evening.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A4F14CB1853269C009BDE2B /* Evening.jpg */; };
+		4110C8371853E9EA00BB5C93 /* DirectoryWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 4110C8361853E9EA00BB5C93 /* DirectoryWatcher.m */; };
+		4110C83A1853EA3000BB5C93 /* SOHTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4110C8381853EA3000BB5C93 /* SOHTableViewController.m */; };
+		4110C83E1853EC6800BB5C93 /* Evening.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4110C83B1853EC6800BB5C93 /* Evening.jpg */; };
+		4110C83F1853EC6800BB5C93 /* SampleDocs in Resources */ = {isa = PBXBuildFile; fileRef = 4110C83C1853EC6800BB5C93 /* SampleDocs */; };
+		4110C8401853EC6800BB5C93 /* Sydney-Opera-House-Glows-Wallpapers-For-iPhone-5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4110C83D1853EC6800BB5C93 /* Sydney-Opera-House-Glows-Wallpapers-For-iPhone-5.jpg */; };
+		4110C8431853F51700BB5C93 /* Kenji Bento Box Opera_27.5.13 16327_edit.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4110C8411853F51700BB5C93 /* Kenji Bento Box Opera_27.5.13 16327_edit.jpg */; };
+		4110C8441853F51700BB5C93 /* Asian tours-1360.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4110C8421853F51700BB5C93 /* Asian tours-1360.jpg */; };
 		41A06E7F1852DC1800D56342 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A06E7E1852DC1800D56342 /* Foundation.framework */; };
 		41A06E811852DC1800D56342 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A06E801852DC1800D56342 /* CoreGraphics.framework */; };
 		41A06E831852DC1800D56342 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A06E821852DC1800D56342 /* UIKit.framework */; };
@@ -50,7 +56,15 @@
 		3A4F14C018532162009BDE2B /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		3A4F14C2185322CA009BDE2B /* images-2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "images-2.jpeg"; sourceTree = "<group>"; };
 		3A4F14C418532300009BDE2B /* SOHext 11 LOW RES.jpg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "SOHext 11 LOW RES.jpg.jpg"; sourceTree = "<group>"; };
-		3A4F14CB1853269C009BDE2B /* Evening.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Evening.jpg; sourceTree = "<group>"; };
+		4110C8351853E9EA00BB5C93 /* DirectoryWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectoryWatcher.h; sourceTree = "<group>"; };
+		4110C8361853E9EA00BB5C93 /* DirectoryWatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectoryWatcher.m; sourceTree = "<group>"; };
+		4110C8381853EA3000BB5C93 /* SOHTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOHTableViewController.m; sourceTree = "<group>"; };
+		4110C8391853EA3000BB5C93 /* SOHTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOHTableViewController.h; sourceTree = "<group>"; };
+		4110C83B1853EC6800BB5C93 /* Evening.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Evening.jpg; sourceTree = "<group>"; };
+		4110C83C1853EC6800BB5C93 /* SampleDocs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SampleDocs; sourceTree = "<group>"; };
+		4110C83D1853EC6800BB5C93 /* Sydney-Opera-House-Glows-Wallpapers-For-iPhone-5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Sydney-Opera-House-Glows-Wallpapers-For-iPhone-5.jpg"; sourceTree = "<group>"; };
+		4110C8411853F51700BB5C93 /* Kenji Bento Box Opera_27.5.13 16327_edit.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Kenji Bento Box Opera_27.5.13 16327_edit.jpg"; sourceTree = "<group>"; };
+		4110C8421853F51700BB5C93 /* Asian tours-1360.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Asian tours-1360.jpg"; sourceTree = "<group>"; };
 		41A06E7B1852DC1800D56342 /* SOHBeacon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SOHBeacon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41A06E7E1852DC1800D56342 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		41A06E801852DC1800D56342 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -83,13 +97,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-
 				41A06EB61852F13400D56342 /* CoreBluetooth.framework in Frameworks */,
 				41A06EB41852F12B00D56342 /* CoreLocation.framework in Frameworks */,
-
 				3A4F14C118532162009BDE2B /* Accounts.framework in Frameworks */,
 				3A4F14BF1853215A009BDE2B /* Social.framework in Frameworks */,
-
 				41A06E811852DC1800D56342 /* CoreGraphics.framework in Frameworks */,
 				41A06E831852DC1800D56342 /* UIKit.framework in Frameworks */,
 				41A06E7F1852DC1800D56342 /* Foundation.framework in Frameworks */,
@@ -131,13 +142,10 @@
 		41A06E7D1852DC1800D56342 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-
 				41A06EB51852F13400D56342 /* CoreBluetooth.framework */,
 				41A06EB31852F12B00D56342 /* CoreLocation.framework */,
-
 				3A4F14C018532162009BDE2B /* Accounts.framework */,
 				3A4F14BE1853215A009BDE2B /* Social.framework */,
-
 				41A06E7E1852DC1800D56342 /* Foundation.framework */,
 				41A06E801852DC1800D56342 /* CoreGraphics.framework */,
 				41A06E821852DC1800D56342 /* UIKit.framework */,
@@ -154,6 +162,10 @@
 				41A06E8D1852DC1800D56342 /* SOHAppDelegate.h */,
 				41A06E8E1852DC1800D56342 /* SOHAppDelegate.m */,
 				41A06E901852DC1800D56342 /* Main.storyboard */,
+				4110C8381853EA3000BB5C93 /* SOHTableViewController.m */,
+				4110C8391853EA3000BB5C93 /* SOHTableViewController.h */,
+				4110C8351853E9EA00BB5C93 /* DirectoryWatcher.h */,
+				4110C8361853E9EA00BB5C93 /* DirectoryWatcher.m */,
 				3A3E4A7218532E41001710A5 /* SOHDetailViewController.h */,
 				3A3E4A7318532E41001710A5 /* SOHDetailViewController.m */,
 				41A06E931852DC1800D56342 /* SOHViewController.h */,
@@ -167,7 +179,11 @@
 		41A06E851852DC1800D56342 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3A4F14CB1853269C009BDE2B /* Evening.jpg */,
+				4110C83B1853EC6800BB5C93 /* Evening.jpg */,
+				4110C83C1853EC6800BB5C93 /* SampleDocs */,
+				4110C83D1853EC6800BB5C93 /* Sydney-Opera-House-Glows-Wallpapers-For-iPhone-5.jpg */,
+				4110C8411853F51700BB5C93 /* Kenji Bento Box Opera_27.5.13 16327_edit.jpg */,
+				4110C8421853F51700BB5C93 /* Asian tours-1360.jpg */,
 				3A4F14C2185322CA009BDE2B /* images-2.jpeg */,
 				41A06E861852DC1800D56342 /* SOHBeacon-Info.plist */,
 				41A06E871852DC1800D56342 /* InfoPlist.strings */,
@@ -292,8 +308,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				41A06E971852DC1800D56342 /* Images.xcassets in Resources */,
-				3A4F14CC1853269C009BDE2B /* Evening.jpg in Resources */,
+				4110C8431853F51700BB5C93 /* Kenji Bento Box Opera_27.5.13 16327_edit.jpg in Resources */,
+				4110C83E1853EC6800BB5C93 /* Evening.jpg in Resources */,
 				41A06E891852DC1800D56342 /* InfoPlist.strings in Resources */,
+				4110C83F1853EC6800BB5C93 /* SampleDocs in Resources */,
+				4110C8401853EC6800BB5C93 /* Sydney-Opera-House-Glows-Wallpapers-For-iPhone-5.jpg in Resources */,
+				4110C8441853F51700BB5C93 /* Asian tours-1360.jpg in Resources */,
 				3A4F14C3185322CA009BDE2B /* images-2.jpeg in Resources */,
 				41A06E921852DC1800D56342 /* Main.storyboard in Resources */,
 			);
@@ -319,7 +339,9 @@
 				41A06E8B1852DC1800D56342 /* main.m in Sources */,
 				41A06EBE1852FFCA00D56342 /* SOHBeaconHelper.m in Sources */,
 				41A06EBA1852F1BE00D56342 /* SOHUser.m in Sources */,
+				4110C83A1853EA3000BB5C93 /* SOHTableViewController.m in Sources */,
 				41A06E8F1852DC1800D56342 /* SOHAppDelegate.m in Sources */,
+				4110C8371853E9EA00BB5C93 /* DirectoryWatcher.m in Sources */,
 				41A06E951852DC1800D56342 /* SOHViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

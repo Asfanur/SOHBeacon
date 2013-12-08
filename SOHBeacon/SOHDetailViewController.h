@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MobileCoreServices/UTCoreTypes.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface SOHDetailViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIImageView *offerImage;
 
-- (void)setProductOffer:(NSNumber *)minor;
+//- (void)setProductOffer:(NSNumber *)minor;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "SOHDetailViewController.h"
 
+
 @interface SOHDetailViewController ()
 
 @end
@@ -35,6 +36,14 @@
     
     [self.navigationController setNavigationBarHidden:NO];
     
+    NSBundle *bundle = [NSBundle mainBundle];
+    NSString *moviePath = [bundle pathForResource:@"nelson-mandela" ofType:@"mp4"];
+    NSURL *movieURL = [NSURL fileURLWithPath:moviePath];
+    MPMoviePlayerViewController *theMovie = [[MPMoviePlayerViewController alloc]
+                                             initWithContentURL: movieURL];
+    [self presentMoviePlayerViewControllerAnimated:theMovie];
+
+    
 }
 
 
@@ -45,21 +54,21 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setProductOffer:(NSNumber *)minor
-{
-    if ([minor isEqualToNumber:@58605]) {
-        self.offerImage.image = [UIImage imageNamed:@"Kenji Bento Box Opera_27.5.13 16327_edit"];
-        
-    } else if ([minor isEqualToNumber:@18108]) {
-        self.offerImage.image = [UIImage imageNamed:@"Asian tours-1360"];
-        
-    } else if ([minor isEqualToNumber:@57466]) {
-        self.offerImage.image = [NSURL URLWithString:@"SOH_TOURS_MANDARIN_v2"];
-        
-    } else {
-        self.offerImage.image = [UIImage imageNamed:@"purpleNotificationBig"];
-    }
-    
-}
+//- (void)setProductOffer:(NSNumber *)minor
+//{
+//    if ([minor isEqualToNumber:@58605]) {
+//        self.offerImage.image = [UIImage imageNamed:@"Kenji Bento Box Opera_27.5.13 16327_edit"];
+//        
+//    } else if ([minor isEqualToNumber:@18108]) {
+//        self.offerImage.image = [UIImage imageNamed:@"Asian tours-1360"];
+//        
+//    } else if ([minor isEqualToNumber:@57466]) {
+//        self.offerImage.image = [NSURL URLWithString:@"SOH_TOURS_MANDARIN_v2"];
+//        
+//    } else {
+//        self.offerImage.image = [UIImage imageNamed:@"purpleNotificationBig"];
+//    }
+//    
+//}
 
 @end
