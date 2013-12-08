@@ -8,6 +8,7 @@
 
 #import "SOHViewController.h"
 #import "SOHUser.h"
+#import <stdlib.h>
 
 static NSString * const kUUID = @"B9407F30-F5F8-466E-AFF9-25556B57FE6D";
 static NSString * const kRegionIdentifier = @"com.sydneyoperahouse";
@@ -18,6 +19,7 @@ static NSString * const kRegionIdentifier = @"com.sydneyoperahouse";
 @property (nonatomic, strong) CLBeaconRegion *region;
 @property (nonatomic, strong) CLBeacon *closestBeacon;
 @property (nonatomic, strong) CLBeacon *currentBeacon;
+@property (nonatomic, strong) UILocalNotification *notification;
 
 @end
 
@@ -107,8 +109,12 @@ static NSString * const kRegionIdentifier = @"com.sydneyoperahouse";
                      
                      
                      dispatch_async(dispatch_get_main_queue(), ^{
-                         NSLog(@"%@",[[[self.facebookAccount dictionaryWithValuesForKeys:c] objectForKey:@"properties"] objectForKey:@"fullname"]);
-                         NSLog(@"emal %@",self.facebookAccount.username);
+                         NSLog(@"%@",[[[self.facebookAccount dictionaryWithValuesForKeys:c] objectForKey:@"properties"] objectForKey:@"ACPropertyFullName"]);
+                         NSLog(@"emal %@",self.facebookAccount);
+                         SOHUser *user = [SOHUser sharedInstance];
+                         user.firstName = [[[self.facebookAccount dictionaryWithValuesForKeys:c] objectForKey:@"properties"] objectForKey:@"ACPropertyFullName"];
+                         user.userEmail = self.facebookAccount.username;
+                         
                          [self performSegueWithIdentifier:@"detailView" sender:self];
                          
                          
@@ -179,7 +185,8 @@ static NSString * const kRegionIdentifier = @"com.sydneyoperahouse";
             //                [self setProductOffer:_currentBeacon.minor];
             //
             //            }
-            
+            [self postToServer:@"1" beacon:@"beacon1" inbound:YES];
+
             
         } else {
             // Moving to another beacon within the region
@@ -189,6 +196,8 @@ static NSString * const kRegionIdentifier = @"com.sydneyoperahouse";
             //                [self postDataToSpreadsheetViaForm];
             //            }
             [[SOHUser sharedInstance] postDataToSpreadsheet:_currentBeacon withUserInfo:user];
+            [self getOfferFromServer:@"beacon1" inbound:NO];
+
             
             _currentBeacon = _closestBeacon;
         }
@@ -215,20 +224,23 @@ static NSString * const kRegionIdentifier = @"com.sydneyoperahouse";
     // A user can transition in or out of a region while the application is not running.
     // When this happens CoreLocation will launch the application momentarily, call this delegate method
     // and we will let the user know via a local notification.
-    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    _notification = [[UILocalNotification alloc] init];
     
     if(state == CLRegionStateInside) {
         NSLog(@"Inside Region %@", region.identifier);
         
-        notification.alertBody = [NSString stringWithFormat:@"You're inside %@", region.identifier];
+        _notification.alertBody = [NSString stringWithFormat:@"You're inside %@", region.identifier];
         //        notification.userInfo = @{@"beacon_minor": _closestBeacon.minor};
         
-        
+        [self getOfferFromServer:@"beacon1" inbound:YES];
+
     } else if(state == CLRegionStateOutside) {
         NSLog(@"Outside Region %@", region.identifier);
         
-        notification.alertBody = [NSString stringWithFormat:@"You're outside %@", region.identifier];
-        
+        _notification.alertBody = [NSString stringWithFormat:@"You're outside %@", region.identifier];
+        [self postToServer:@"1" beacon:@"beacon1" inbound:NO];
+
+        [self getOfferFromServer:@"beacon1" inbound:NO];
     } else {
         return;
     }
@@ -236,7 +248,7 @@ static NSString * const kRegionIdentifier = @"com.sydneyoperahouse";
     // If the application is in the foreground, it will get a callback to application:didReceiveLocalNotification:.
     // If its not, iOS will display the notification to the user.
     //    [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
-    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+    [[UIApplication sharedApplication] scheduleLocalNotification:_notification];
     
     
 }
@@ -250,7 +262,11 @@ static NSString * const kRegionIdentifier = @"com.sydneyoperahouse";
         self.imageTouch.image = [UIImage imageNamed:@"Asian tours-1360.jpg"];
         
     } else if ([minor isEqualToNumber:@57466]) {
-        self.imageTouch.image = [UIImage imageNamed:@"Asian tours-1360.jpg"];
+        int r = arc4random() * 10000;
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://10.10.0.104:8080/stores/uploaded.jpg?cache=%d", r ]];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        
+        self.imageTouch.image = [UIImage imageWithData:data];
         
     } else {
         self.imageTouch.image = [UIImage imageNamed:@"purpleNotificationBig"];
@@ -281,6 +297,88 @@ static NSString * const kRegionIdentifier = @"com.sydneyoperahouse";
     
     return proximityString;
 }
+
+- (void)postToServer:(NSString *)userId beacon:(NSString *)beacon inbound:(BOOL)inbound
+{
+    NSURL *url = [[NSURL alloc] initWithString:@"http://10.10.0.104:8080/UpdateUserRegistrationAtLocation"];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    
+    NSString *params = [NSString stringWithFormat:@"%@=%@&%@=%@&%@=%@",
+                        @"userId", userId,
+                        @"beacon", beacon,
+                        @"inbound", inbound ? @1 : @0];
+    
+    NSData *paramsData = [params dataUsingEncoding:NSUTF8StringEncoding];
+    [request setHTTPBody:paramsData];
+    
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:queue
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                               
+                               if (data.length > 0 && connectionError == nil) {
+                                   //                                    NSString *html = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                                   //                                    NSLog(@"HTML = %@", html);
+                                   NSLog(@"== posted data to Server==");
+                                   
+                               } else if (data.length == 0 && connectionError == nil) {
+                                   NSLog(@"No data");
+                               } else if (connectionError != nil) {
+                                   NSLog(@"Connection Error %@", connectionError);
+                               }
+                               
+                           }];
+}
+
+
+- (void)getOfferFromServer:(NSString *)beacon inbound:(BOOL)inbound
+{
+    NSURL *url = [[NSURL alloc] initWithString:@"http://10.10.0.104:8080/OfferForBeacon"];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    
+    NSString *params = [NSString stringWithFormat:@"%@=%@&%@=%@",
+                        @"beacon", beacon,
+                        @"inbound", inbound ? @1 : @0];
+    
+    NSData *paramsData = [params dataUsingEncoding:NSUTF8StringEncoding];
+    [request setHTTPBody:paramsData];
+    
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:queue
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                               
+                               if (data.length > 0 && connectionError == nil) {
+                                   //                                    NSString *html = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                                   //                                    NSLog(@"HTML = %@", html);
+                                   NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers | NSJSONReadingAllowFragments error:nil];
+                                   
+//                                   [[NSString alloc ]initWithData:data encoding:NSUTF8StringEncoding]
+                                   
+                                   NSLog(@"== offer from server== %@", jsonData);
+                                   NSLog(@"== offer from server== %@", jsonData);
+                                   NSLog(@"== offer from server== %@", jsonData);
+                                   NSLog(@"== offer from server== %@", jsonData);
+                                   _notification = [[UILocalNotification alloc] init];
+
+                                   _notification.alertBody = [jsonData objectForKey:@"beaconAlertText"];
+                                   _notification.userInfo = jsonData;
+                                   [[UIApplication sharedApplication] scheduleLocalNotification:_notification];
+
+                                   
+                               } else if (data.length == 0 && connectionError == nil) {
+                                   NSLog(@"No data");
+                               } else if (connectionError != nil) {
+                                   NSLog(@"Connection Error %@", connectionError);
+                               }
+                               
+                           }];
+}
+
 
 
 @end

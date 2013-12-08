@@ -33,7 +33,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 //    // Override point for customization after application launch.
-
+    NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    NSLog(@"Notification %@", userInfo);
+    NSLog(@"Notification %@", userInfo);
     //    self.locationManager = [[CLLocationManager alloc] init];
 //    self.locationManager.delegate = self;
 //    
